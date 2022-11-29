@@ -4,16 +4,16 @@
 //===================================================
 
 using System.Collections.Concurrent;
-using HR.API.Models;
+using HR.DataAccess;
 
 namespace HR.API
 {
-    public  class MockEmployeeRepository : IEmployeeRepository
+    public  class SqlserverEmployeeRepository : IEmployeeRepository
     {
         private static ConcurrentDictionary<int, Employee> _employees = new ConcurrentDictionary<int, Employee>();
         private static object locker = new ();
 
-        public MockEmployeeRepository()
+        public SqlserverEmployeeRepository()
         {
             Init();
         }

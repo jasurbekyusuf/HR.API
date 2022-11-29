@@ -3,9 +3,7 @@
 // Free To Use To Find Comfort and Pease
 //===================================================
 
-using HR.API.Models;
-
-namespace HR.API
+namespace HR.DataAccess
 {
     public interface IEmployeeRepository
     {

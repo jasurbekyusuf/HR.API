@@ -4,6 +4,7 @@
 //===================================================
 
 using HR.API.Models;
+using HR.API.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR.API.Controllers
@@ -12,17 +13,17 @@ namespace HR.API.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        private readonly IEmployeeRepository _employeeRepository;
-        public EmployeeController(IEmployeeRepository employeeRepository)
+        private readonly IGenericCRUDService<EmployeeModel> _employeeSvc;
+        public EmployeeController(IGenericCRUDService<EmployeeModel> employeeSvc)
         {
-            _employeeRepository = employeeRepository;
+            _employeeSvc = employeeSvc;
         }
 
         // GET: api/<EmployeeController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _employeeRepository.GetEmployees());
+            return Ok(await _employeeSvc.GetAll());
         }
 
         // GET api/<EmployeeController>/5
@@ -34,23 +35,23 @@ namespace HR.API.Controllers
             else if (id < 0)
                 return BadRequest("Wrong data.");
 
-            return Ok(await _employeeRepository.GetEmployee(id));
+            return Ok(await _employeeSvc.Get(id));
         }
 
         // POST api/<EmployeeController>
         [HttpPost]
-        public async  Task<IActionResult> Post([FromBody] Employee employee)
+        public async  Task<IActionResult> Post([FromBody] EmployeeModel employee)
         {
-            var createdEmployee = await _employeeRepository.CreateEmployee(employee);
+            var createdEmployee = await _employeeSvc.Create(employee);
             var routeValues = new { id = createdEmployee.Id };
             return CreatedAtRoute(routeValues, createdEmployee);
         }
 
         // PUT api/<EmployeeController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Employee employee)
+        public async Task<IActionResult> Put(int id, [FromBody] EmployeeModel employee)
         {
-            var updatedEmployee = await _employeeRepository.UpdateEmployee(id, employee);
+            var updatedEmployee = await _employeeSvc.Update(id, employee);
             return Ok(updatedEmployee);
         }
 
@@ -58,7 +59,7 @@ namespace HR.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            bool deleteResult = await _employeeRepository.DeleteEmployee(id);
+            bool deleteResult = await _employeeSvc.Delete(id);
 
             if (deleteResult)
                 return NoContent();
