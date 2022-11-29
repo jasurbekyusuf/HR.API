@@ -47,7 +47,6 @@ namespace HR.API
         public async Task<Employee> UpdateEmployee(int id, Employee employee)=>
             await Task.FromResult(_employees[id]= _employees[id] = employee);
 
-
         public  Task<bool> DeleteEmployee(int id)
         {
             if (_employees.ContainsKey(id))
