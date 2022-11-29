@@ -4,8 +4,12 @@
 //===================================================
 
 using HR.API;
+using HR.DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeDb")));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

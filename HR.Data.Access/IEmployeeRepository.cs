@@ -5,14 +5,14 @@
 
 using HR.API.Models;
 
-namespace HR.API
+namespace HR.DataAccess
 {
     public interface IEmployeeRepository
     {
-        public Task<Employee> CreateEmployee(Employee employee);
-        Task<IEnumerable<Employee>> GetEmployees();
-        Task<Employee> GetEmployee(int id);
-        Task<Employee> UpdateEmployee(int id, Employee employee);
+        public Task<EmployeeModel> CreateEmployee(EmployeeModel employee);
+        Task<IEnumerable<EmployeeModel>> GetEmployees();
+        Task<EmployeeModel> GetEmployee(int id);
+        Task<EmployeeModel> UpdateEmployee(int id, EmployeeModel employee);
         Task<bool> DeleteEmployee(int id);
     }
 }

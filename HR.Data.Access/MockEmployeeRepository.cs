@@ -4,14 +4,13 @@
 //===================================================
 
 using System.Collections.Concurrent;
-using HR.API.Models;
 
-namespace HR.API
+namespace HR.DataAccess
 {
-    public  class MockEmployeeRepository : IEmployeeRepository
+    public class MockEmployeeRepository : IEmployeeRepository
     {
         private static ConcurrentDictionary<int, Employee> _employees = new ConcurrentDictionary<int, Employee>();
-        private static object locker = new ();
+        private static object locker = new();
 
         public MockEmployeeRepository()
         {
@@ -38,16 +37,16 @@ namespace HR.API
             return await Task.FromResult(employee);
         }
 
-        public  async Task<IEnumerable<Employee>> GetEmployees()=>
+        public async Task<IEnumerable<Employee>> GetEmployees() =>
             await Task.FromResult(_employees.Values);
 
-        public  async Task<Employee> GetEmployee(int id) =>
+        public async Task<Employee> GetEmployee(int id) =>
             await Task.FromResult(_employees[id]);
 
-        public async Task<Employee> UpdateEmployee(int id, Employee employee)=>
-            await Task.FromResult(_employees[id]= _employees[id] = employee);
+        public async Task<Employee> UpdateEmployee(int id, Employee employee) =>
+            await Task.FromResult(_employees[id] = _employees[id] = employee);
 
-        public  Task<bool> DeleteEmployee(int id)
+        public Task<bool> DeleteEmployee(int id)
         {
             if (_employees.ContainsKey(id))
             {

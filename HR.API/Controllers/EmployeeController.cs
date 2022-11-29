@@ -39,7 +39,7 @@ namespace HR.API.Controllers
 
         // POST api/<EmployeeController>
         [HttpPost]
-        public async  Task<IActionResult> Post([FromBody] Employee employee)
+        public async  Task<IActionResult> Post([FromBody] EmployeeModel employee)
         {
             var createdEmployee = await _employeeRepository.CreateEmployee(employee);
             var routeValues = new { id = createdEmployee.Id };
@@ -48,7 +48,7 @@ namespace HR.API.Controllers
 
         // PUT api/<EmployeeController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Employee employee)
+        public async Task<IActionResult> Put(int id, [FromBody] EmployeeModel employee)
         {
             var updatedEmployee = await _employeeRepository.UpdateEmployee(id, employee);
             return Ok(updatedEmployee);

@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HR.API.Models
 {
-    public class Employee
+    public class EmployeeModel
     {
         public int Id { get; set; }
         [Required]
