@@ -15,18 +15,19 @@ namespace HR.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await Task.FromResult(() => new string[] { "value1", "value2" }));
+            return Ok(await MockEmployeeRepository.GetEmployees());
         }
 
         // GET api/<EmployeeController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             if (id == 0)
                 return NotFound($"Employee with the given id:{id} is not found.");
             else if (id < 0)
                 return BadRequest("Wrong data.");
-            return Ok("value");
+
+            return Ok(await MockEmployeeRepository.GetEmployee(id));
         }
 
         // POST api/<EmployeeController>

@@ -3,6 +3,8 @@
 // Free To Use To Find Comfort and Pease
 //===================================================
 
+using HR.API;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -18,9 +20,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
+
+MockEmployeeRepository.Init();
 
 app.Run();
