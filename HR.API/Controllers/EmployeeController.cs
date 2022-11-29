@@ -48,14 +48,22 @@ namespace HR.API.Controllers
 
         // PUT api/<EmployeeController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(int id, [FromBody] Employee employee)
         {
+            var updatedEmployee = await _employeeRepository.UpdateEmployee(id, employee);
+            return Ok(updatedEmployee);
         }
 
         // DELETE api/<EmployeeController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            bool deleteResult = await _employeeRepository.DeleteEmployee(id);
+
+            if (deleteResult)
+                return NoContent();
+            else
+                return NotFound();
         }
     }
 }

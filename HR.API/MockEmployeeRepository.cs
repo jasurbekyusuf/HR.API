@@ -38,14 +38,27 @@ namespace HR.API
             return await Task.FromResult(employee);
         }
 
-        public  async Task<IEnumerable<Employee>> GetEmployees()
-        {
-            return await Task.FromResult(_employees.Values);
-        }
+        public  async Task<IEnumerable<Employee>> GetEmployees()=>
+            await Task.FromResult(_employees.Values);
 
-        public  async Task<Employee> GetEmployee(int id) 
+        public  async Task<Employee> GetEmployee(int id) =>
+            await Task.FromResult(_employees[id]);
+
+        public async Task<Employee> UpdateEmployee(int id, Employee employee)=>
+            await Task.FromResult(_employees[id]= _employees[id] = employee);
+
+
+        public  Task<bool> DeleteEmployee(int id)
         {
-            return await Task.FromResult(_employees[id]);
+            if (_employees.ContainsKey(id))
+            {
+                _employees.TryRemove(id, out _);
+                return Task.FromResult(true);
+            }
+            else
+            {
+                return Task.FromResult(false);
+            }
         }
     }
 }
