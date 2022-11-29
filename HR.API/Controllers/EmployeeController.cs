@@ -3,7 +3,9 @@
 // Free To Use To Find Comfort and Pease
 //===================================================
 
+using HR.API.Models;
 using Microsoft.AspNetCore.Mvc;
+///*using Microsoft.Gra*/ph;
 
 namespace HR.API.Controllers
 {
@@ -32,8 +34,11 @@ namespace HR.API.Controllers
 
         // POST api/<EmployeeController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async  Task<IActionResult> Post([FromBody] Employee employee)
         {
+            var createdEmployee = await MockEmployeeRepository.CreateEmployee(employee);
+            var routeValues = new { id = createdEmployee.Id };
+            return CreatedAtRoute(routeValues, createdEmployee);
         }
 
         // PUT api/<EmployeeController>/5

@@ -11,7 +11,7 @@ namespace HR.API
     public static class MockEmployeeRepository
     {
         private static ConcurrentDictionary<int, Employee> _employees = new ConcurrentDictionary<int, Employee>();
-
+        private static object locker = new ();
         public static void Init()
         {
             _employees.TryAdd(1, new Employee { Id = 1, FullName = "John Doe", Department = "IT", Email = "jon@nt.com" });
@@ -29,6 +29,18 @@ namespace HR.API
         public static async Task<Employee> GetEmployee(int id) 
         {
             return await Task.FromResult(_employees[id]);
+        }
+
+        public static Task<Employee> CreateEmployee(Employee employee)
+        {
+            int newId = 0;
+            lock (locker)
+            {
+                newId = _employees.Keys.Max() + 1;
+            }
+            employee.Id = newId;
+            _employees.TryAdd(newId, employee);
+            return Task.FromResult(employee);
         }
     }
 }
