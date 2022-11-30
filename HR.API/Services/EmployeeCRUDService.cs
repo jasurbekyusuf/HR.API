@@ -5,18 +5,22 @@
 
 using HR.API.Models;
 using HR.DataAccess;
+using HR.DataAccess.Entities;
 
 namespace HR.API.Services
 {
     public class EmployeeCRUDService : IGenericCRUDService<EmployeeModel>
     {
         private readonly IEmployeeRepository _employeeRepository;
-        public EmployeeCRUDService(IEmployeeRepository employeeRepository)
+        private readonly IAddressRepository _addressRepository;
+        public EmployeeCRUDService(IEmployeeRepository employeeRepository , IAddressRepository addressRepository)
         {
             _employeeRepository= employeeRepository;
+            _addressRepository= addressRepository;
         }
         public async Task<EmployeeModel> Create(EmployeeModel model)
         {
+            var existingAddress = await _addressRepository.GetAddress(model.AddressId);
             var employee = new Employee
             {
                 FullName = model.FullName,
@@ -24,6 +28,9 @@ namespace HR.API.Services
                 Email = model.Email,
                 Salary= model.Salary,
             };
+            if (existingAddress != null)
+                employee.Address = existingAddress;
+
             var createdEmployee = await _employeeRepository.CreateEmployee(employee);
             var result = new EmployeeModel
             {
@@ -31,7 +38,8 @@ namespace HR.API.Services
                 Department = createdEmployee.Department,
                 Email = createdEmployee.Email,
                 Id = createdEmployee.Id,
-                Salary = createdEmployee.Salary
+                Salary = createdEmployee.Salary,
+                AddressId = createdEmployee.Address.Id
             };
             return result;
         }

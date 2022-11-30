@@ -3,6 +3,8 @@
 // Free To Use To Find Comfort and Pease
 //===================================================
 
+using HR.DataAccess.Entities;
+
 namespace HR.DataAccess
 {
     public interface IEmployeeRepository
