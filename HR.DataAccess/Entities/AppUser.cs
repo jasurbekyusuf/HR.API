@@ -3,11 +3,12 @@
 // Free To Use To Find Comfort and Pease
 //===================================================
 
-namespace HR.API.Models
+using Microsoft.AspNetCore.Identity;
+
+namespace HR.DataAccess.Entities
 {
-    public class ResponseModel
+    public class AppUser : IdentityUser
     {
-        public string Status { get; set; }
-        public string Message { get; set; }
+
     }
 }
