@@ -7,19 +7,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HR.API.Models
 {
-    public class EmployeeModel
+    public class AddressModel
     {
         public int Id { get; set; }
         [Required]
-        [StringLength(50, MinimumLength = 2)]
-        public string FullName { get; set; }
+        public string AddressLine1 { get; set; }
         [Required]
-        [StringLength(50, MinimumLength = 2)]
-        public string Department { get; set; }
+        public string AddressLine2 { get; set; }
         [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-        public decimal Salary { get; set; }
-        public int AddressId { get; set; }
+        public string PostalCode { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
     }
 }

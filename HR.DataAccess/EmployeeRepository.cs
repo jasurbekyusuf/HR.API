@@ -3,14 +3,15 @@
 // Free To Use To Find Comfort and Pease
 //===================================================
 
+using HR.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace HR.DataAccess
 {
-    public class SqlserverEmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository : IEmployeeRepository
     {
         private readonly AppDbContext _dbContext;
-        public SqlserverEmployeeRepository(AppDbContext dbContext)
+        public EmployeeRepository(AppDbContext dbContext)
         {
             _dbContext= dbContext;
         }
