@@ -15,7 +15,9 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeDb")));
+builder.Services.AddDbContextPool<AppDbContext>(options => 
+    options.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeDb")));
+
 builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
@@ -39,9 +41,6 @@ builder.Services.AddAuthentication(options =>
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
         };
     });
-
-
-
 
 builder.Services.AddScoped<IGenericCRUDService<EmployeeModel>, EmployeeCRUDService>();
 builder.Services.AddScoped<IGenericCRUDService<AddressModel>, AddressCRUDService>();
