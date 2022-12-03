@@ -14,8 +14,8 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace HR.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
@@ -91,10 +91,7 @@ namespace HR.API.Controllers
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     exiration = token.ValidTo
                 });
-
-               
             }
-
             return Unauthorized();
         }
     }
