@@ -5,7 +5,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace HR.API.Models
+namespace HR.API.Models.Employees
 {
     public class EmployeeModel
     {

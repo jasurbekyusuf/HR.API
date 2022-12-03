@@ -3,8 +3,9 @@
 // Free To Use To Find Comfort and Pease
 //===================================================
 
-using HR.API.Models;
-using HR.DataAccess;
+using HR.API.Models.Employees;
+using HR.DataAccess.Addressess;
+using HR.DataAccess.Employees;
 using HR.DataAccess.Entities;
 
 namespace HR.API.Services

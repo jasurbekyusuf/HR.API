@@ -6,14 +6,14 @@
 using HR.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace HR.DataAccess
+namespace HR.DataAccess.Addressess
 {
     public class SqlserverAddressRepository : IAddressRepository
     {
         private readonly AppDbContext _dbContext;
         public SqlserverAddressRepository(AppDbContext dbContext)
         {
-            _dbContext= dbContext;
+            _dbContext = dbContext;
         }
 
         public async Task<Address> CreateAddress(Address address)
@@ -25,7 +25,7 @@ namespace HR.DataAccess
 
         public async Task<bool> DeleteAddress(int id)
         {
-            var address =await _dbContext.Addresses.FindAsync(id);
+            var address = await _dbContext.Addresses.FindAsync(id);
             if (address != null)
             {
                 _dbContext.Addresses.Remove(address);

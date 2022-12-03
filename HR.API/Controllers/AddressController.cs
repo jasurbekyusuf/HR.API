@@ -3,7 +3,7 @@
 // Free To Use To Find Comfort and Pease
 //===================================================
 
-using HR.API.Models;
+using HR.API.Models.Addresses;
 using HR.API.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

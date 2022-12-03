@@ -4,7 +4,7 @@
 //===================================================
 
 using System.Collections.Concurrent;
-using HR.DataAccess;
+using HR.DataAccess.Employees;
 using HR.DataAccess.Entities;
 
 namespace HR.API

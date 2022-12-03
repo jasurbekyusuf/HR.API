@@ -6,7 +6,9 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using HR.API.Models;
+using HR.API.Models.Logins;
+using HR.API.Models.Registers;
+using HR.API.Models.Responses;
 using HR.DataAccess.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

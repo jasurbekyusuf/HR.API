@@ -3,7 +3,7 @@
 // Free To Use To Find Comfort and Pease
 //===================================================
 
-namespace HR.API.Models
+namespace HR.API.Models.Responses
 {
     public class ResponseModel
     {

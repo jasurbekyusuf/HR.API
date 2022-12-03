@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HR.API.Models
+namespace HR.API.Models.Registers
 {
     public class RegisterModel
     {

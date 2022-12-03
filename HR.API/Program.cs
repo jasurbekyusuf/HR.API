@@ -4,9 +4,12 @@
 //===================================================
 
 using System.Text;
-using HR.API.Models;
+using HR.API.Models.Addresses;
+using HR.API.Models.Employees;
 using HR.API.Services;
 using HR.DataAccess;
+using HR.DataAccess.Addressess;
+using HR.DataAccess.Employees;
 using HR.DataAccess.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -48,8 +51,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IEmployeeRepository, HR.DataAccess.EmployeeRepository>();
-builder.Services.AddScoped<IAddressRepository, HR.DataAccess.SqlserverAddressRepository>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<IAddressRepository, SqlserverAddressRepository>();
 
 var app = builder.Build();
 
