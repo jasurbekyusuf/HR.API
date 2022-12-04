@@ -3,8 +3,8 @@
 // Free To Use To Find Comfort and Pease
 //===================================================
 
-using HR.API.Models;
-using HR.DataAccess;
+using HR.API.Models.Addresses;
+using HR.DataAccess.Addressess;
 using HR.DataAccess.Entities;
 
 namespace HR.API.Services

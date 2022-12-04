@@ -5,7 +5,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace HR.API.Models
+namespace HR.API.Models.Logins
 {
     public class LoginModel
     {

@@ -3,14 +3,14 @@
 // Free To Use To Find Comfort and Pease
 //===================================================
 
-using HR.API.Models;
+using HR.API.Models.Employees;
 using HR.API.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class EmployeeController : ControllerBase
     {
         private readonly IGenericCRUDService<EmployeeModel> _employeeSvc;
@@ -19,14 +19,12 @@ namespace HR.API.Controllers
             _employeeSvc = employeeSvc;
         }
 
-        // GET: api/<EmployeeController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             return Ok(await _employeeSvc.GetAll());
         }
 
-        // GET api/<EmployeeController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -38,7 +36,6 @@ namespace HR.API.Controllers
             return Ok(await _employeeSvc.Get(id));
         }
 
-        // POST api/<EmployeeController>
         [HttpPost]
         public async  Task<IActionResult> Post([FromBody] EmployeeModel employee)
         {
@@ -47,7 +44,6 @@ namespace HR.API.Controllers
             return CreatedAtRoute(routeValues, createdEmployee);
         }
 
-        // PUT api/<EmployeeController>/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] EmployeeModel employee)
         {
@@ -55,7 +51,6 @@ namespace HR.API.Controllers
             return Ok(updatedEmployee);
         }
 
-        // DELETE api/<EmployeeController>/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

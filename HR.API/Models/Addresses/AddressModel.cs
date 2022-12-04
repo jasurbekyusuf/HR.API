@@ -5,7 +5,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace HR.API.Models
+namespace HR.API.Models.Addresses
 {
     public class AddressModel
     {

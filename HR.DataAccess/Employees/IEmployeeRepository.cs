@@ -5,7 +5,7 @@
 
 using HR.DataAccess.Entities;
 
-namespace HR.DataAccess
+namespace HR.DataAccess.Employees
 {
     public interface IEmployeeRepository
     {

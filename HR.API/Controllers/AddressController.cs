@@ -3,15 +3,15 @@
 // Free To Use To Find Comfort and Pease
 //===================================================
 
-using HR.API.Models;
+using HR.API.Models.Addresses;
 using HR.API.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class AddressController : ControllerBase
     {
         private readonly IGenericCRUDService<AddressModel> _addressSvc;
@@ -20,7 +20,6 @@ namespace HR.API.Controllers
             _addressSvc = addressSvc;
         }
 
-        // GET: api/<addressController>
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> Get()
@@ -28,7 +27,6 @@ namespace HR.API.Controllers
             return Ok(await _addressSvc.GetAll());
         }
 
-        // GET api/<addressController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -40,7 +38,6 @@ namespace HR.API.Controllers
             return Ok(await _addressSvc.Get(id));
         }
 
-        // POST api/<addressController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] AddressModel address)
         {
@@ -49,7 +46,6 @@ namespace HR.API.Controllers
             return CreatedAtRoute(routeValues, createdaddress);
         }
 
-        // PUT api/<addressController>/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] AddressModel address)
         {
@@ -57,7 +53,6 @@ namespace HR.API.Controllers
             return Ok(updatedaddress);
         }
 
-        // DELETE api/<addressController>/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

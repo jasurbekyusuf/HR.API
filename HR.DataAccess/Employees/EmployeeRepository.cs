@@ -6,14 +6,14 @@
 using HR.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace HR.DataAccess
+namespace HR.DataAccess.Employees
 {
     public class EmployeeRepository : IEmployeeRepository
     {
         private readonly AppDbContext _dbContext;
         public EmployeeRepository(AppDbContext dbContext)
         {
-            _dbContext= dbContext;
+            _dbContext = dbContext;
         }
         public async Task<Employee> CreateEmployee(Employee employee)
         {
