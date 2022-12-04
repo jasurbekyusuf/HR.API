@@ -13,12 +13,12 @@ namespace HR.API.Services
         public bool IsValid(string accountNumber)
         {
             var firstDelimiter = accountNumber.IndexOf('-');
-            var secondDelimiter = accountNumber.IndexOf("-");
-            if (firstDelimiter == -1 || secondDelimiter == -1)
+            var secondDelimiter = accountNumber.LastIndexOf("-");
+            if (firstDelimiter == -1 || secondDelimiter == firstDelimiter)
                 throw new ArgumentException();
             
             var firstPart = accountNumber.Substring(0, firstDelimiter);
-            if (firstPart.Length == startingPartLength)
+            if (firstPart.Length != startingPartLength)
                 return false;
             
             var tempPart = accountNumber.Remove(0, startingPartLength + 1);
