@@ -53,6 +53,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IAddressRepository, SqlserverAddressRepository>();
+builder.Services.AddScoped<IAccountNumberValidationService, AccountNumberValidationService>();
 
 var app = builder.Build();
 
