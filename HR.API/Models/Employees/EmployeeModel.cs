@@ -21,6 +21,7 @@ namespace HR.API.Models.Employees
         public string Email { get; set; }
         public decimal Salary { get; set; }
         public int AddressId { get; set; }
-        public string AccountNumber { get;  set; }
+        public string AccountNumber { get; set; }
+
     }
 }
